@@ -1,0 +1,39 @@
+<html ng-app="scada">
+<head>
+	<title>Manejador de Peticiones</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><!-- load jquery -->
+	<script type="text/javascript" src="script.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
+	<script type="text/javascript" src = "socket.js"></script>
+</head>
+<body>
+	<h2>Crear Usuario</h2>
+	<div ng-controller="mainController">
+		<form>
+			User: <input type="text" ng-model="formData.user"><br>
+			Password: <input type="password" ng-model="formData.password"><br>
+			Mail: <input type="text" ng-model="formData.mail">
+			<input type="button" value="Submit!" ng-click="addUser()">
+		</form>
+		<input type="button" value="Mostrar Todo" ng-click="showUsers()"><br>
+		<input type="button" value="Mostrar Medidas" ng-click="showMeasures()"><br>
+
+		<table border="1">
+			<tr ng-repeat="x in users">
+				<td>{{x.user}}</td>
+				<td>{{x.password}}</td>
+				<td>{{x.mail}}</td>
+			</tr>
+		</table>
+
+		<table border="1">
+			<tr ng-repeat="measure in measures">
+				<td>{{measure.id}}</td>
+				<td>{{measure.value}}</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+</html>
